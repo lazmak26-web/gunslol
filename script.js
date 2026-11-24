@@ -166,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     typeWriterName();
-    typeWriterBio();
   });
 
   startScreen.addEventListener('touchstart', (e) => {
@@ -197,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     typeWriterName();
-    typeWriterBio();
   });
 
 
