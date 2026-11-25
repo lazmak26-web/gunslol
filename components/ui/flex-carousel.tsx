@@ -47,6 +47,8 @@ export interface FlexCarouselProps extends Partial<PresetValues> {
   focusOnClick?: boolean;
   autoplay?: boolean;
   interval?: number;
+  /** Continuous glide speed in cards per second (0 = off). Pauses while dragging and briefly after. */
+  drift?: number;
   captions?: boolean;
   captureWheel?: boolean;
   onChange?: (index: number, item: FlexCarouselItem) => void;
@@ -65,6 +67,7 @@ interface Settings extends PresetValues {
   focusOnClick: boolean;
   autoplay: boolean;
   interval: number;
+  drift: number;
   captureWheel: boolean;
 }
 
@@ -413,6 +416,7 @@ const FlexCarousel = ({
   focusOnClick = true,
   autoplay = false,
   interval = 4,
+  drift = 0,
   captions = true,
   captureWheel = true,
   onChange,
@@ -459,6 +463,7 @@ const FlexCarousel = ({
       focusOnClick,
       autoplay,
       interval,
+      drift,
       captureWheel
     };
     engineRef.current?.wake();
@@ -954,7 +959,22 @@ const FlexCarousel = ({
         autoplayAt = now;
         step(m, 1);
       }
-      if (s.autoplay && !reducedMotion) animating = true;
+      if (
+        s.drift > 0 &&
+        !reducedMotion &&
+        introState.done &&
+        focus.target === 0 &&
+        focus.t < 0.01 &&
+        !pointer.down &&
+        !pointer.dragging &&
+        mode === 'spring' &&
+        now - interactedAt > 1500
+      ) {
+        // Slide the goal forward at a steady pace; the spring follows it smoothly.
+        goal += (m.widths[current] + m.gap) * s.drift * dt;
+        animating = true;
+      }
+      if ((s.autoplay || s.drift > 0) && !reducedMotion) animating = true;
 
       const travel = Math.abs(pos - lastPos) / dt;
       lastPos = pos;

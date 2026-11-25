@@ -16,10 +16,10 @@ export default function Home() {
           <Header />
           <main className="flex-1">
             <Hero />
+            <Lookbook />
             <Perks />
             <Marquee />
             <ProductGrid products={PRODUCTS} />
-            <Lookbook />
             <Story />
             <Care />
             <NewsletterSection />

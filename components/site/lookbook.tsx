@@ -13,7 +13,7 @@ const LOOKS: FlexCarouselItem[] = [
 
 /** WebGL lookbook carousel: drag or swipe sideways, click a card to open it. */
 export function Lookbook() {
-  // Phones: bigger cards in a shorter stage, so there is no empty band around them.
+  // Phones: smaller cards so several stay in view, like on desktop.
   const [narrow, setNarrow] = React.useState(false);
   React.useEffect(() => {
     const mq = window.matchMedia("(max-width: 640px)");
@@ -24,7 +24,7 @@ export function Lookbook() {
   }, []);
 
   return (
-    <section id="lookbook" aria-labelledby="lookbook-heading" className="scroll-mt-20 pt-20 sm:pt-28">
+    <section id="lookbook" aria-labelledby="lookbook-heading" className="scroll-mt-20 pt-6 sm:pt-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 sm:px-6 md:flex-row md:items-end md:justify-between">
         <div className="max-w-xl">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">New arrivals</p>
@@ -36,19 +36,19 @@ export function Lookbook() {
           Hoodies, knits, denim and sneakers. Drag sideways to browse, tap a piece to open it.
         </p>
       </div>
-      <div className="mt-4 h-[64svh] min-h-[440px] max-h-[820px] w-full sm:mt-6 sm:h-[78svh] sm:min-h-[460px]">
+      <div className="mt-2 h-[58svh] min-h-[400px] max-h-[820px] w-full sm:mt-6 sm:h-[78svh] sm:min-h-[460px]">
         <FlexCarousel
           items={LOOKS}
           preset="liquid"
           intro="rise"
           key={narrow ? "narrow" : "wide"}
-          cardHeight={narrow ? 0.72 : 0.55}
+          cardHeight={narrow ? 0.5 : 0.55}
           gap={14}
           radius={14}
           // Leave vertical wheel scrolling to the page; sideways swipes still move the carousel.
           captureWheel={false}
-          autoplay
-          interval={4}
+          // Always gliding, slowly: about one card every 7 seconds.
+          drift={0.14}
           className="text-foreground"
         />
       </div>
