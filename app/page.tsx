@@ -1,5 +1,6 @@
 import { CartProvider } from "@/components/site/cart";
 import { Header } from "@/components/site/header";
+import { Lookbook } from "@/components/site/lookbook";
 import { Hero } from "@/components/site/hero";
 import { PageMotion } from "@/components/site/page-motion";
 import { ProductGrid } from "@/components/site/product-grid";
@@ -18,6 +19,7 @@ export default function Home() {
             <Perks />
             <Marquee />
             <ProductGrid products={PRODUCTS} />
+            <Lookbook />
             <Story />
             <Care />
             <NewsletterSection />
