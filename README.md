@@ -1,14 +1,26 @@
 # Almero Store
 
-Streetwear pour enfants (2–14 ans). Démo de boutique en ligne : Next.js 15, TypeScript, Tailwind CSS v4 et structure shadcn (`src/components/ui`).
+Kids streetwear store demo (ages 2–14), built with Next.js 15, Tailwind CSS v4, TypeScript and a shadcn-style structure.
+Smooth scrolling uses Lenis and scroll animations use GSAP (`components/site/smooth-scroll.tsx`, `components/site/page-motion.tsx`).
+The hero is an interactive clothing rail (`components/ui/product-rail-gallery.tsx`).
+
+## Edit products
+
+Names, prices and details live in `lib/products.ts`. Pieces without an `image` are drawn from their `kind` and `color`.
+To use a real photo, put a transparent cut-out in `public/products/` (a 200 × 310 portrait canvas works best) and set `image`.
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-- Galerie « portant » : `src/components/ui/product-rail-gallery.tsx` (dessins dans `garment-art.ts`).
-- Produits : tableau `DROP` dans `src/app/page.tsx`.
-- Commandes WhatsApp : définir `NEXT_PUBLIC_WHATSAPP` (ex. `2126XXXXXXXX`).
+## Production
 
-L'ancien code (biolink) est conservé sur la branche `backup/biolink-before-almero`.
+```bash
+npm run build
+npm start
+```
+
+`npm start` listens on `$PORT` (Railway sets it automatically).
