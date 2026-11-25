@@ -7,7 +7,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 const serif = Instrument_Serif({ variable: "--font-serif", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: "Le Bon Choix — Clothing on the rail",
+  title: "Alpha 4 Men — Clothing on the rail",
   description: "A small-batch clothing label. Oversized tees, washed fabrics, prints that age with you.",
 };
 
