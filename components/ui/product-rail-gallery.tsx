@@ -1233,27 +1233,4 @@ function Detail({ uid, item, index, total, hanger, labels, reduced, source, onLi
   );
 }
 
-/** One garment drawn on its own (no rail or hanger), e.g. for product cards. Uses the same art as the rail. */
-export function GarmentIllustration({
-  kind = "tee",
-  color = "var(--color-muted-foreground)",
-  trim,
-  side = "front",
-  className,
-}: {
-  kind?: GarmentKind;
-  color?: string;
-  trim?: string;
-  side?: "front" | "back";
-  className?: string;
-}) {
-  const uid = React.useId().replace(/[^a-zA-Z0-9_-]/g, "");
-  return (
-    <div aria-hidden="true" className={`relative ${className ?? ""}`} style={{ aspectRatio: `${VB_W} / ${VB_H}` }}>
-      <Defs uid={uid} />
-      <Fabric uid={uid} kind={kind} side={side} color={color} trim={trim ?? mix(color, -0.12)} />
-    </div>
-  );
-}
-
 export default ClothingRailHero;

@@ -99,10 +99,6 @@ export function PageMotion() {
         });
       }
 
-      // Second tape runs the other way at a steady pace
-      const rev = document.querySelector<HTMLElement>("[data-marquee-rev]");
-      if (rev) gsap.fromTo(rev, { xPercent: -50 }, { xPercent: 0, duration: 34, ease: "none", repeat: -1 });
-
       // Header hides while scrolling down, comes back on the way up
       const header = document.querySelector<HTMLElement>("[data-header]");
       if (header) {
