@@ -1,4 +1,4 @@
-# Almero Store
+# Le Bon Choix
 
 Clothing store landing page built with Next.js 15, Tailwind CSS v4, TypeScript and a shadcn-style structure.
 Smooth scrolling uses Lenis and scroll animations use GSAP (`components/site/smooth-scroll.tsx`, `components/site/page-motion.tsx`).
